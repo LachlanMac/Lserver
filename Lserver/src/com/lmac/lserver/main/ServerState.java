@@ -7,8 +7,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
-import com.lmac.lserver.net.ConnectionManager;
 import com.lmac.lserver.utils.Log;
 
 
@@ -19,7 +17,8 @@ public class ServerState extends BasicGameState {
 
 	
 	Connection conn;
-	
+
+	ListenerManager lm;
 	@Override
 	public void init(GameContainer sContainer, StateBasedGame server) throws SlickException {
 		
@@ -34,10 +33,11 @@ public class ServerState extends BasicGameState {
 		
 		Log.print("Starting Connection Manager");
 		
-		ConnectionManager cm = new ConnectionManager(3355);
-		cm.createListeners(3);
-				
+		//cm = new ConnectionManager(3355);
+		//cm.createListeners(3);
+		lm = new ListenerManager(3355,3356);
 		
+		lm.startListeners();
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ServerState extends BasicGameState {
 
 	@Override
 	public void update(GameContainer sContainer, StateBasedGame server, int delta) throws SlickException {
-		// TODO Auto-generated method stub
+
 		
 	}
 
