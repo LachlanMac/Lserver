@@ -1,18 +1,24 @@
 package com.lmac.lserver.net;
 
-public class MovePacket extends Packet{
-	
-	
-	
-	public MovePacket(int playerID) {
-		super(playerID);
-		
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+
+public class MovePacket extends Packet {
+
+	private byte[] moveData;
+
+	public MovePacket(byte[] moveData) {
+
+		this.moveData = moveData;
+
 	}
 
-	public String getData() {
-		
-		return playerID + ": x, y";
-		
+	@Override
+	public DatagramPacket getPacket(InetAddress destinationAddress, int destinationPort) {
+
+		DatagramPacket p = new DatagramPacket(moveData, moveData.length, destinationAddress, destinationPort);
+
+		return p;
 	}
-	
+
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.lmac.lserver.net.PacketExecutor;
 import com.lmac.lserver.utils.Log;
+import com.lmac.lserver.utils.Transmission;
 
 public class ListenerManager {
 	// This class receives packets on a socket and decodes them.
@@ -22,29 +23,43 @@ public class ListenerManager {
 	// cat server socket
 	private DatagramSocket chatSocket;
 
-	public ListenerManager(int loginPort, int serverPort) {
+	LoginListener loginListener;
+	ServerListener serverListener;
+	ServerSender serverSender;
+	Transmission io;
+	ConnectionManager cm;
+
+	public ListenerManager(int loginPort, int serverPort, ConnectionManager cm, Transmission io) {
 
 		try {
-
+			this.io = io;
 			this.loginSocket = new DatagramSocket(loginPort);
 			this.serverSocket = new DatagramSocket(serverPort);
-
+			this.cm = cm;
 		} catch (SocketException e) {
 			Log.error("Could not create server sockets");
 			e.printStackTrace();
 		}
 
 	}
-	
+
 	public void startListeners() {
+
+		loginListener = new LoginListener(loginSocket, cm);
+		serverListener = new ServerListener(serverSocket, cm, io);
+		serverSender = new ServerSender(serverSocket, cm, io);
 		
-		new LoginListener(loginSocket).start();
-		new ServerListener(serverSocket).start();
-		
-		
-		
+		loginListener.start();
+		serverListener.start();
+		serverSender.start();
 		
 	}
-	
 
+	public ServerSender getSender() {
+		return serverSender;
+	}
+
+	public ServerListener getListener() {
+		return serverListener;
+	}
 }

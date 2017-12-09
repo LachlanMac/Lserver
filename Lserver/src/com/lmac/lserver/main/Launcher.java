@@ -15,6 +15,8 @@ public static void main(String[] args){
 			server.setTargetFrameRate(60);
 			server.setMaximumLogicUpdateInterval(60);
 			server.setVSync(true);
+			server.setUpdateOnlyWhenVisible(false);
+			server.setAlwaysRender(true);
 			// start game
 			server.start();
 		} catch (SlickException e) {

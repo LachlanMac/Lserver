@@ -15,17 +15,17 @@ public class LoginValidator {
 		this.conn = SQLLoader.getConnection();
 	}
 
-	public boolean validate(String data) {
+	public int validate(String data) {
 		Log.print("Validating for string: " + data);
 		String[] loginInfo = data.split("-");
 		String user = loginInfo[1].trim();
 		String password = loginInfo[2].trim();
-		String charID = loginInfo[3].trim();
+		int charID = Integer.parseInt(loginInfo[3].trim());
 
 		try {
 
 			PreparedStatement stmt;
-
+			
 			String query = "SELECT password FROM accounts WHERE username=?";
 			if (conn == null) {
 				Log.error("SQL connection == null");
@@ -38,21 +38,22 @@ public class LoginValidator {
 			
 			while (rs.next()) {
 				pwCheck = rs.getString("password");
+				
 			}
 
 			if (pwCheck.trim().equals(password)) {
 				Log.print("Password Verified");
-				return true;
+				return charID;
 			} else {
 				Log.print("Password Check Failed");
-				return false;
+				return 0;
 			}
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		return false;
+		return 0;
 
 	}
 

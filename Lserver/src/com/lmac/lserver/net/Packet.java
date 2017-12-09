@@ -1,42 +1,30 @@
 package com.lmac.lserver.net;
 
 import java.net.DatagramPacket;
+import java.net.InetAddress;
 
-public class Packet {
 
-	private final static int PACKET_SIZE = 512;
-	protected byte[] data;
-	protected int playerID;
-	public Packet(int playerID) {
-		this.playerID = playerID;
-		data = new byte[512];
+
+
+	public abstract class Packet {
+
+		protected InetAddress destinationAddress;
+		protected int destinationPort;
+
+		public Packet() {
+
+		}
+
+		public abstract DatagramPacket getPacket(InetAddress destinationAddress, int destinationPort);
+
 		
+
+		public int getDestinationPort() {
+
+			return destinationPort;
+
+		}
 	}
-	
-	
-	public String getData() {
-		return "Basic Packet";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static DatagramPacket getEmptyPacket(){
-		
-		byte[] data = new byte[PACKET_SIZE];
-		
-		return new DatagramPacket(data, data.length);
-		
-		
-	}
-	
-	
-}
+
 
 

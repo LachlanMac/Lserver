@@ -17,10 +17,10 @@ public class LoginListener extends Listener {
 	byte[] response = new byte[128];
 	DatagramPacket loginResponse = new DatagramPacket(response, response.length);
 	LoginValidator validator;
-	
-	public LoginListener(DatagramSocket socket) {
+	ConnectionManager cm;
+	public LoginListener(DatagramSocket socket, ConnectionManager cm) {
 		super(socket);
-		
+		this.cm = cm;
 		validator = new LoginValidator();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,9 +40,9 @@ public class LoginListener extends Listener {
 				String received = new String(loginRequest.getData());
 				//parse login info
 			
-				boolean loginConf = validator.validate(received);
+				int loginConf = validator.validate(received);
 				
-				if(loginConf == true){
+				if(loginConf != 0){
 				
 					
 					byte[] conf = new byte[128];
@@ -50,7 +50,7 @@ public class LoginListener extends Listener {
 					DatagramPacket loginConfirmation = new DatagramPacket(conf, conf.length, address, port);
 					Log.print("Sending Login Confirmation");
 					socket.send(loginConfirmation);
-					
+					cm.addConnection(new PlayerConnection(loginConf, address, port));
 					
 					
 				}else{
