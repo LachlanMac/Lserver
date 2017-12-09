@@ -3,14 +3,14 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="/Users/lachlanmccallum/eclipse-workspace/Slick2DProject/library/slick/lib/jinput.jar"/>
-	<classpathentry kind="lib" path="/Users/lachlanmccallum/eclipse-workspace/Slick2DProject/library/slick/lib/lwjgl_util.jar"/>
-	<classpathentry kind="lib" path="/Users/lachlanmccallum/eclipse-workspace/Slick2DProject/library/slick/lib/lwjgl.jar">
+	<classpathentry kind="lib" path="C:/Users/lachl/git/slicky/lib/jinput.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lachl/git/slicky/lib/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/lachlanmccallum/eclipse-workspace/Slick2DProject/library/slick"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/lachl/git/slicky"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/lachlanmccallum/eclipse-workspace/Slick2DProject/library/slick/lib/slick.jar"/>
-	<classpathentry kind="lib" path="/Users/lachlanmccallum/Downloads/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lachl/git/slicky/lib/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lachl/git/slicky/lib/slick.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lachl/Downloads/mysql-connector-java-5.1.41/mysql-connector-java-5.1.41-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

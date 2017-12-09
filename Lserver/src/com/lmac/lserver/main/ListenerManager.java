@@ -39,6 +39,7 @@ public class ListenerManager {
 	public void startListeners() {
 		
 		new LoginListener(loginSocket).start();
+		new ServerListener(serverSocket).start();
 		
 		
 		
