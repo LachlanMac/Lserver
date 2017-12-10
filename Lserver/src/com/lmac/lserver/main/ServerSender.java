@@ -46,7 +46,7 @@ public class ServerSender extends Thread {
 					for (int i = 0; i < cm.getPlayerList().size(); i++) {
 
 
-						DatagramPacket out = sendQueue.peek().getPacket(cm.getPlayerList().get(i).getInetAddress(),
+						DatagramPacket out = sendQueue.peek().encodePacket(cm.getPlayerList().get(i).getInetAddress(),
 								cm.getPlayerList().get(i).getPort());
 						try {
 							socket.send(out);

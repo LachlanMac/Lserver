@@ -25,7 +25,7 @@ public class PlayerData {
 
 	public void getPlayerData() {
 
-		String query = "SELECT name, level, str_stat, con_stat, agi_stat, int_stat, xcoord, ycoord, zone_id, account_id, hp FROM players WHERE user=?";
+		String query = "SELECT name, level, str_stat, con_stat, agi_stat, int_stat, xcoord, ycoord, zone_id, account_id, hp FROM players WHERE player_id=?";
 		if (conn == null) {
 			Log.error("SQL connection == null");
 		}

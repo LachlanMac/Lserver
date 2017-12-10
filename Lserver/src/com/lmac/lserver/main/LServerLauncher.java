@@ -3,7 +3,7 @@ package com.lmac.lserver.main;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
-public class Launcher {
+public class LServerLauncher{
 	
 	
 public static void main(String[] args){

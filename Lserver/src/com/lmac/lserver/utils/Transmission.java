@@ -4,8 +4,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Circle;
 
-import com.lmac.lserver.main.ServerListener;
-import com.lmac.lserver.main.ServerSender;
 
 public class Transmission {
 	

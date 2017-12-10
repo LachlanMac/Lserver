@@ -3,25 +3,24 @@ package com.lmac.lserver.net;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 
-public class MovePacket extends Packet {
-
-	private byte[] moveData;
-	private final int PACKET_ID = 05;
+public class MPConnectPacket extends Packet{
 	
-	
-	public MovePacket(byte[] moveData) {
+	private byte[] playerData;
 
-		this.moveData = moveData;
+	public MPConnectPacket(byte[] playerData) {
+
+		this.playerData = playerData;
 
 	}
-
+	
+	
 	@Override
 	public DatagramPacket encodePacket(InetAddress destinationAddress, int destinationPort) {
-
-		DatagramPacket p = new DatagramPacket(moveData, moveData.length, destinationAddress, destinationPort);
-
+		
+		DatagramPacket p = new DatagramPacket(playerData, playerData.length, destinationAddress, destinationPort);
 		return p;
 	}
+
 
 	@Override
 	public void decodePacket(DatagramPacket p) {

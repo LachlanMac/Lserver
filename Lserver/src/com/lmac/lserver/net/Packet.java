@@ -15,8 +15,9 @@ import java.net.InetAddress;
 
 		}
 
-		public abstract DatagramPacket getPacket(InetAddress destinationAddress, int destinationPort);
+		public abstract DatagramPacket encodePacket(InetAddress destinationAddress, int destinationPort);
 
+		public abstract void decodePacket(DatagramPacket p);
 		
 
 		public int getDestinationPort() {
