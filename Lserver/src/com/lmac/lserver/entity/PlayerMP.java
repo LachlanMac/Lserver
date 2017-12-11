@@ -6,6 +6,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
+import com.lmac.lserver.utils.Log;
+
 public class PlayerMP extends Entity {
 	
 	private int port;
@@ -31,7 +33,7 @@ public class PlayerMP extends Entity {
 		
 		loc = new Vector2f(x, y);
 		
-		
+		Log.print("[MP Player Created]   Name: "+this.name+" Pid: " + this.playerID + "\nLocation: " + this.zoneID + " (" + this.x +", " +this.y);
 		
 	}
 	

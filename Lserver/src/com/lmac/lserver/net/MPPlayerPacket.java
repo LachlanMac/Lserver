@@ -8,17 +8,26 @@ import com.lmac.lserver.main.PlayerConnection;
 
 public class MPPlayerPacket extends Packet {
 
-	private byte[] serverData;
-
-	public MPPlayerPacket(byte[] serverData) {
-		this.serverData = serverData;
+	private final String PACKET_ID = "70";
+	private String playerData;
+	private byte[] data;
+	public MPPlayerPacket(String playerData) {
+		this.playerData = playerData;
 
 	}
 
 	@Override
 	public DatagramPacket encodePacket(InetAddress destinationAddress, int destinationPort) {
 
-		DatagramPacket p = new DatagramPacket(serverData, serverData.length, destinationAddress, destinationPort);
+		String dataS = PACKET_ID + "x=" + playerData + "=" + "data";
+		
+		data = new byte[128];
+		
+		data = dataS.getBytes();
+		
+		
+		
+		DatagramPacket p = new DatagramPacket(data, data.length, destinationAddress, destinationPort);
 		return p;
 	}
 

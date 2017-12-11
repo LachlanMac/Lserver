@@ -5,6 +5,7 @@ import com.lmac.lserver.main.PlayerConnection;
 import com.lmac.lserver.main.ServerSender;
 import com.lmac.lserver.net.MPConnectPacket;
 import com.lmac.lserver.net.MPPlayerPacket;
+import com.lmac.lserver.utils.Log;
 
 
 public class PacketSender {
@@ -24,19 +25,19 @@ public class PacketSender {
 
 	}
 
-	public void sendMPConnectionPacket(byte[] data) {
+	public void sendMPConnectionPackets() {
 		
 		PlayerConnection p;
 		
 		for (int i = 0; i < cm.getPlayerList().size(); i++) {
-
+			
 			p = cm.getPlayerList().get(i);
 			
+			String mpPacket = Integer.toString(p.getPlayerID());
 			
 			
-			
-			
-			sender.addPacket(new MPPlayerPacket(data));
+		
+			sender.addPacket(new MPPlayerPacket(mpPacket));
 
 			
 			

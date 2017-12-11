@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import com.lmac.lserver.entity.EntityManager;
 import com.lmac.lserver.entity.PlayerMP;
+import com.lmac.lserver.entity.PulsePacketManager;
 import com.lmac.lserver.net.MovePacket;
 import com.lmac.lserver.packet.PacketReader;
 import com.lmac.lserver.packet.PacketSender;
@@ -31,6 +32,7 @@ public class ServerState extends BasicGameState {
 	PacketReader pr;
 	PacketSender ps;
 	PlayerMP p;
+	PulsePacketManager pulse;
 	
 	
 	@Override
@@ -50,9 +52,7 @@ public class ServerState extends BasicGameState {
 		em = new EntityManager();
 		
 		
-		
-		
-		
+
 		
 		
 		Log.print("Starting Connection Manager");
@@ -69,7 +69,7 @@ public class ServerState extends BasicGameState {
 		
 		lm.startListeners();
 
-		
+		pulse = new PulsePacketManager(cm, ps);
 		
 		
 	}
@@ -82,8 +82,9 @@ public class ServerState extends BasicGameState {
 
 	@Override
 	public void update(GameContainer sContainer, StateBasedGame server, int delta) throws SlickException {
-
+		
 		cm.update();
+		pulse.update();
 		em.update();
 	}
 

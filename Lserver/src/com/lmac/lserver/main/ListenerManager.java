@@ -2,7 +2,6 @@ package com.lmac.lserver.main;
 
 import java.net.DatagramSocket;
 import java.net.SocketException;
-import java.util.ArrayList;
 import com.lmac.lserver.packet.PacketReader;
 import com.lmac.lserver.utils.Log;
 import com.lmac.lserver.utils.Transmission;
